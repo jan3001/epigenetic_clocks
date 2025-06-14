@@ -1,5 +1,5 @@
-.Rhistory
-.RData
-output/
-final_merged_hg19_ucsc_file.*
-Illumina_Human_hg19_Methylation_UCSC_cCRE_Overlaps.*
+# ignore any raw data
+*.csv
+*.txt
+*.tsv
+*.Rda

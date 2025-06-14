@@ -33,60 +33,64 @@ Keep these under `DATA/lab/` (not public):
 
 ## Requirements
 
-- R (≥ 3.6)  
-- Packages:  
-  ```r
-  install.packages(c("devtools","preprocessCore","ggplot2","ggfortify"))
-  devtools::install_github("yiluyucheng/dnaMethyAge")
-````
+* **R** (version 3.6 or higher)
+* **R packages**:
 
----
+  ```r
+  install.packages(c("devtools", "preprocessCore", "ggplot2", "ggfortify"))
+  devtools::install_github("yiluyucheng/dnaMethyAge")
+  ```
 
 ## Usage
 
 1. **Configure**
-   At the top of `epigenetic_clocks.R`, set:
+   Open `epigenetic_clocks.R` and set the path to your data folder:
 
    ```r
    data_dir <- "/full/path/to/DATA"
    ```
 
 2. **Run**
+   From the command line:
 
    ```bash
    Rscript epigenetic_clocks.R
    ```
 
----
-
 ## What it does
 
-1. **Loads** public β-matrices (adds an `ID_REF` column if needed)
+1. **Loads** public β-value matrices (adds an `ID_REF` column if missing)
 2. **Merges** all datasets by CpG ID
-3. **Filters** to autosomal probes via the lab annotation `.Rda`
-4. **Quantile-normalizes** and drops incomplete probes
-5. **Reads** sample ages & conditions from `Samples.tsv`
-6. **Computes** epigenetic age (mAge) & age acceleration for published clocks (HorvathS2013, HannumG2013, LevineM2018, ZhangQ2019, ShirebyG2020, YangZ2016, ZhangY2017, LuA2019, HorvathS2018, DunedinPACE, McEwenL2019, CBL\_specific, PC‐ and CBL‐ variants, epiTOC2, LuA2023p1–p3)
-7. **Plots** scatterplots of mAge vs. chronological age and boxplots by condition
+3. **Filters** to autosomal probes using the lab’s annotation Rda
+4. **Quantile-normalizes** the merged matrix and removes probes with missing data
+5. **Reads** sample ages and conditions from `Samples.tsv`
+6. **Computes** DNAm age (`mAge`) and age acceleration for published clocks:
 
----
+   * HorvathS2013
+   * HannumG2013
+   * LevineM2018
+   * ZhangQ2019
+   * ShirebyG2020
+   * YangZ2016
+   * ZhangY2017
+   * LuA2019
+   * HorvathS2018
+   * DunedinPACE
+   * McEwenL2019
+   * CBL\_specific
+   * PCHorvathS2013, PCHannumG2013, PCHorvathS2018, PCPhenoAge
+   * CBL\_common, Cortex\_common
+   * epiTOC2
+   * LuA2023p1, LuA2023p2, LuA2023p3
+7. **Plots** scatterplots of epigenetic age vs. chronological age and boxplots comparing age acceleration across conditions
 
 ## Outputs
 
-* Scatterplots appear in your R session (one per clock)
-* Example boxplot comparing mAge distributions across conditions
-
----
-
-## License
-
-MIT © Your Name
-
-```
-```
+* Interactive **scatterplots** in your R session (one per clock)
+* Example **boxplot** of age acceleration by condition
 
 
-# Epigenetic Clocks
+
 
 This repository contains only the R script to run epigenetic-age clocks:
 
